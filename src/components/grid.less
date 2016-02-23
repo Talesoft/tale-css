@@ -1,0 +1,58 @@
+
+@import (once) '../theme';
+@import (once) '../util';
+
+@grid-column-count: 12;
+@grid-width: 100%;
+
+@grid-name: grid;
+@grid-container-name: container;
+@grid-row-name: ~"@{prefix}row";
+@grid-column-name: ~"@{prefix}col";
+@grid-offset-name: offset;
+
+@grid-container-padding: 0 10px;
+@grid-max-width: 1200px;
+
+@grid-large-column-name: ~"@{grid-column-name}-@{large-name}";
+@grid-medium-column-name: ~"@{grid-column-name}-@{medium-name}";
+@grid-small-column-name: ~"@{grid-column-name}-@{small-name}";
+@grid-extra-small-column-name: ~"@{grid-column-name}-@{extra-small-name}";
+
+@grid-row-rules: {};
+@grid-column-rules: {};
+
+.create-columns(@name, @column-count: @grid-column-count, @width: @grid-width, @i: 1) when (@i =< @column-count) {
+
+    &.@{name}-@{i} {
+        width: (@width / @column-count) * @i;
+    }
+
+    &.@{name}-@{grid-offset-name}-@{i} {
+        margin-left: (@width / @column-count) * @i;
+    }
+    .create-columns(@name, @column-count, @width, (@i + 1));
+}
+
+.@{grid-name} {
+    .center;
+    max-width: @grid-max-width;
+}
+
+.@{grid-container-name} {
+    padding: @grid-container-padding;
+}
+
+.@{grid-row-name} {
+    @grid-row-rules();
+
+    & > .@{grid-column-name} {
+        @grid-column-rules();
+
+        .create-columns(@grid-large-column-name);
+
+        .desktop({ .create-columns(@grid-medium-column-name); });
+        .tablet({ .create-columns(@grid-small-column-name); });
+        .phone({ .create-columns(@grid-extra-small-column-name); });
+    }
+}

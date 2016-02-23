@@ -1,0 +1,116 @@
+
+
+@import (once) '../theme';
+@import (once) '../util';
+
+@html-font-family: @primary-font-family;
+@html-font-size: @font-size;
+@html-line-height: @line-height;
+@html-foreground: @foreground-color;
+@html-background: @background-color;
+
+@headline-font-family: @primary-font-family;
+@headline-font-size: 1rem;
+@headline-font-size-factor: .3rem;
+@headline-line-height: @line-height;
+
+@paragraph-line-height: @line-height;
+@paragraph-padding: 10px 0;
+
+@list-padding: 0 0 0 30px;
+
+@link-color: @primary-color;
+@link-hover-color: lighten(@primary-color, 10%);
+@link-active-color: darken(@primary-color, 10%);
+
+@abbr-bottom-border: 1px dashed @html-foreground;
+
+@quote-prefix: '\201C';
+@quote-suffix: '\201D';
+@quote-inner-prefix: '\2018';
+@quote-inner-suffix: '\2019';
+
+@mark-color: @warning-color;
+
+html {
+    font-family: @html-font-family;
+    font-size: @html-font-size;
+    line-height: @html-line-height;
+    color: @html-foreground;
+    background: @html-background;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: @headline-font-family;
+    line-height: @headline-line-height;
+}
+
+h1 { font-size: @headline-font-size + (@headline-font-size-factor * 4); }
+h2 { font-size: @headline-font-size + (@headline-font-size-factor * 3); }
+h3 { font-size: @headline-font-size + (@headline-font-size-factor * 2); }
+h4 { font-size: @headline-font-size + @headline-font-size-factor; }
+h5 { font-size: @headline-font-size; }
+h6 { font-size: @headline-font-size; font-weight: normal; }
+
+p {
+    line-height: @paragraph-line-height;
+    padding: @paragraph-padding;
+}
+
+abbr {
+    border-bottom: @abbr-bottom-border;
+    cursor: default;
+}
+
+ol, ul {
+    padding: @list-padding;
+}
+
+ul {
+    list-style: disc outside;
+    ul {
+        list-style-type: square;
+        ul {
+            list-style-type: circle;
+        }
+    }
+}
+
+ol {
+    list-style: decimal outside;
+    ol {
+        list-style-type: lower-alpha;
+        ol {
+            list-style-type: upper-alpha;
+        }
+    }
+}
+
+code, kbd, pre, samp, var {
+    font-family: @monospace-font-family;
+}
+
+a {
+    color: @link-color;
+
+    .hover({color: @link-hover-color});
+    .active({color: @link-active-color});
+}
+
+q, blockquote {
+    &:before { content: @quote-prefix; }
+    &:after { content: @quote-suffix; }
+
+    & & {
+        &:before {
+            content: @quote-inner-prefix;
+        }
+        &:after {
+            content: @quote-inner-suffix;
+        }
+    }
+}
+
+mark {
+    background: @mark-color;
+}

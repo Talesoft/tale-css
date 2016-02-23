@@ -1,0 +1,137 @@
+
+@import (once) '../theme';
+
+@panel-name: ~"@{prefix}panel";
+@panel-header-name: ~"@{panel-name}-header";
+@panel-title-name: ~"@{panel-name}-title";
+@panel-body-name: ~"@{panel-name}-body";
+@panel-footer-name: ~"@{panel-name}-footer";
+
+@panel-background: @background-color;
+@panel-border-color: @border-color;
+
+@panel-border-width: @border-width;
+@panel-border-style: @border-style;
+@panel-border-radius: @border-radius;
+
+@panel-padding: 5px 10px;
+
+@panel-primary-name: ~"@{panel-name}-@{primary-name}";
+@panel-info-name: ~"@{panel-name}-@{info-name}";
+@panel-success-name: ~"@{panel-name}-@{success-name}";
+@panel-warning-name: ~"@{panel-name}-@{warning-name}";
+@panel-danger-name: ~"@{panel-name}-@{danger-name}";
+
+@panel-default-background: @panel-background;
+@panel-default-border-color: @panel-border-color;
+@panel-default-header-background: lighten(@default-color, 10%);
+@panel-default-footer-background: @panel-default-header-background;
+@panel-primary-background: @panel-background;
+@panel-primary-border-color: @primary-color;
+@panel-primary-header-background: lighten(@primary-color, 10%);
+@panel-primary-footer-background: @panel-primary-header-background;
+@panel-info-background: @panel-background;
+@panel-info-border-color: @info-color;
+@panel-info-header-background: lighten(@info-color, 10%);
+@panel-info-footer-background: @panel-info-header-background;
+@panel-success-background: @panel-background;
+@panel-success-border-color: @success-color;
+@panel-success-header-background: lighten(@success-color, 10%);
+@panel-success-footer-background: @panel-success-header-background;
+@panel-warning-background: @panel-background;
+@panel-warning-border-color: @warning-color;
+@panel-warning-header-background: lighten(@warning-color, 10%);
+@panel-warning-footer-background: @panel-warning-header-background;
+@panel-danger-background: @panel-background;
+@panel-danger-border-color: @danger-color;
+@panel-danger-header-background: lighten(@danger-color, 10%);
+@panel-danger-footer-background: @panel-danger-header-background;
+
+.@{panel-name} {
+    border-radius: @panel-border-radius;
+    border: @panel-border-width @panel-border-style @panel-border-color;
+
+    .@{panel-header-name}, .@{panel-footer-name}, .@{panel-body-name} {
+        padding: @panel-padding;
+    }
+
+    .@{panel-header-name} {
+        border-bottom: @panel-border-width @panel-border-style @panel-border-width;
+        background: @panel-default-header-background;
+    }
+
+    .@{panel-footer-name} {
+        border-top: @panel-border-width @panel-border-style @panel-border-width;
+        background: @panel-default-footer-background;
+    }
+
+    //Primary
+    &.@{panel-primary-name} {
+        border-color: @panel-primary-border-color;
+
+        .@{panel-header-name} {
+            background: @panel-primary-header-background;
+            border-bottom-color: @panel-primary-border-color;
+        }
+        .@{panel-footer-name} {
+            background: @panel-primary-footer-background;
+            border-top-color: @panel-primary-border-color;
+        }
+    }
+
+    //Info
+    &.@{panel-info-name} {
+        border-color: @panel-info-border-color;
+
+        .@{panel-header-name} {
+            background: @panel-info-header-background;
+            border-bottom-color: @panel-primary-border-color;
+        }
+        .@{panel-footer-name} {
+            background: @panel-info-footer-background;
+            border-top-color: @panel-primary-border-color;
+        }
+    }
+
+    //Success
+    &.@{panel-success-name} {
+        border-color: @panel-success-border-color;
+
+        .@{panel-header-name} {
+            background: @panel-success-header-background;
+            border-bottom-color: @panel-success-border-color;
+        }
+        .@{panel-footer-name} {
+            background: @panel-success-footer-background;
+            border-top-color: @panel-success-border-color;
+        }
+    }
+
+    //Warning
+    &.@{panel-warning-name} {
+        border-color: @panel-warning-border-color;
+
+        .@{panel-header-name} {
+            background: @panel-warning-header-background;
+            border-bottom-color: @panel-warning-border-color;
+        }
+        .@{panel-footer-name} {
+            background: @panel-warning-footer-background;
+            border-top-color: @panel-warning-border-color;
+        }
+    }
+
+    //Danger
+    &.@{panel-danger-name} {
+        border-color: @panel-danger-border-color;
+
+        .@{panel-header-name} {
+            background: @panel-danger-header-background;
+            border-bottom-color: @panel-danger-border-color;
+        }
+        .@{panel-footer-name} {
+            background: @panel-danger-footer-background;
+            border-top-color: @panel-danger-border-color;
+        }
+    }
+}
